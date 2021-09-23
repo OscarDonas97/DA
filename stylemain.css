@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+body{
+    background-color: cadetblue;
+    background-image: url(img/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.saldos{
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 150px;
+    justify-content: center;
+    background-color: rgba(0,128,255,0.7);
+    color: white;
+    font-size: 24px;
+    height: 300px;
+}

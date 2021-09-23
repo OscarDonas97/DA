@@ -1,0 +1,103 @@
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="stylemain.css">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>banca en linea</title>
+    </head>
+    <body>
+        <div class="saldos">
+        <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12 col-sm-6">
+      <h1 class="display-1">Bienvenido a tus cuentas en linea</h1>
+        <label for="">Saldo Cuenta 1</label>
+        <input type="text" name="Cantidad1" id="c1" value="2000">
+        <label for="">Saldo Cuenta 2</label>
+        <input type="text" name="Cantidad2" id="c2" value="1500">
+        <div class="formulario">
+            <form action="" onsubmit="">
+                <h2>Transferencias</h2>
+                <input type="text" name="" id="Cant" placeholder="Cantidad">
+                <hr>
+                <br>
+                <input type="button" value="Transferencia de cuenta 1 a 2" id="bt2" onclick="formula()">
+                <input type="button" value="Transferencia de cuenta 2 a 1" id="bt3" onclick="formula2()">
+                <input type="button" value="Depositar dinero a cuenta 1" id="bt4" onclick="formula3()">
+                <input type="button" value="Depositar dinero a cuenta 2" id="bt5" onclick="formula4()">
+                <input type="button" value="Retirar dinero de cuenta 1" id="bt6" onclick="formula5()">
+                <input type="button" value="Retirar dinero de cuenta 2" id="bt7" onclick="formula6()">
+                <input type="button" value="Ver historial de transacciones" id="btn8" onclick="formula7()">
+                
+            </form>
+        </div>
+        </div>
+        </div>
+        <script>
+            let transacciones = [];
+            
+            
+            function formula(){
+                var CantidadT=parseInt(document.getElementById('Cant').value);
+                var Cantidad1=parseInt(document.getElementById('c1').value);
+                var Cantidad2=parseInt(document.getElementById('c2').value);
+                document.getElementById('c1').value=(Cantidad1-CantidadT);
+                document.getElementById('c2').value=(Cantidad2+CantidadT);
+                transacciones.push([1, 'Transferencia de cuenta 1 a 2', CantidadT]);
+                console.table(transacciones);
+            }
+            function formula2(){
+            var CantidadT=parseInt(document.getElementById('Cant').value);
+                var Cantidad1=parseInt(document.getElementById('c1').value);
+                var Cantidad2=parseInt(document.getElementById('c2').value);
+                document.getElementById('c1').value=(Cantidad1+CantidadT);
+                document.getElementById('c2').value=(Cantidad2-CantidadT);   
+                transacciones.push([2, 'Transferencia de cuenta 2 a 1', CantidadT]);
+                console.table(transacciones);
+            }
+            function formula3(){
+            var CantidadT=parseInt(document.getElementById('Cant').value);
+                var Cantidad1=parseInt(document.getElementById('c1').value);
+                var Cantidad2=parseInt(document.getElementById('c2').value);
+                document.getElementById('c1').value=(Cantidad1+CantidadT);
+                transacciones.push([3, 'Depositar dinero a cuenta 1', CantidadT]);
+                console.table(transacciones);
+            }
+            function formula4(){
+            var CantidadT=parseInt(document.getElementById('Cant').value);
+                var Cantidad1=parseInt(document.getElementById('c1').value);
+                var Cantidad2=parseInt(document.getElementById('c2').value);
+                document.getElementById('c2').value=(Cantidad2+CantidadT);
+                transacciones.push([4, 'Depositar dinero a cuenta 2', CantidadT]);
+                console.table(transacciones);
+            }
+            function formula5(){
+                var CantidadT=parseInt(document.getElementById('Cant').value);
+                var Cantidad1=parseInt(document.getElementById('c1').value);
+                var Cantidad2=parseInt(document.getElementById('c2').value);
+                document.getElementById('c1').value=(Cantidad1-CantidadT);
+                transacciones.push([5, 'Retirar dinero de cuenta 1', CantidadT]);
+                console.table(transacciones);
+            }
+            function formula6(){
+                var CantidadT=parseInt(document.getElementById('Cant').value);
+                var Cantidad1=parseInt(document.getElementById('c1').value);
+                var Cantidad2=parseInt(document.getElementById('c2').value);
+                document.getElementById('c2').value=(Cantidad2-CantidadT);
+                transacciones.push([6, 'Retirar dinero de cuenta 2', CantidadT]);
+                console.table(transacciones);
+            }
+            
+            function formula7(){
+                location="table.html"
+            }
+            
+            document.getElementById('btn8').onclick=function() {
+                sessionStorage.setItem('TheArray', JSON.stringify(transacciones));
+                window.location.href='table.html';
+            }
+            
+        </script>
+    </body>
+</html>
